@@ -1,11 +1,11 @@
 # Deepflow
-# 🚜 Bluebook for Bulldozers - Sale Price Prediction
+#  Bluebook for Bulldozers - Sale Price Prediction
 
 This project focuses on predicting the **sale price of used bulldozers** using historical auction data provided by **Kaggle**. The goal is to build a machine learning model that accurately estimates prices based on various features like product ID, usage, location, and date of sale.
 
 ---
 
-## 📁 Dataset Overview
+##  Dataset Overview
 
 - **Source:** [Kaggle: Bluebook for Bulldozers](https://www.kaggle.com/competitions/bluebook-for-bulldozers/)
 - **Files used:**
@@ -17,7 +17,7 @@ This project focuses on predicting the **sale price of used bulldozers** using h
 
 ---
 
-## ⚙️ Approach
+## ⚙ Approach
 
 ### 1. **Preprocessing**
 - Converted `saledate` to datetime format and extracted temporal features like:
@@ -44,13 +44,13 @@ This project focuses on predicting the **sale price of used bulldozers** using h
 
 | Metric              | Score     |
 |---------------------|-----------|
-| Training RMSLE      | *(your score)* |
-| Validation RMSLE    | *(your score)* |
+| Training RMSLE      |   0.25307 |
+| Validation RMSLE    |   0.28722 |
 | Final Model Used    | RandomForestRegressor |
 
 ---
 
-## 📦 Libraries Used
+##  Libraries Used
 
 - pandas
 - numpy
@@ -61,5 +61,5 @@ This project focuses on predicting the **sale price of used bulldozers** using h
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
