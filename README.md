@@ -8,9 +8,9 @@ The goal of this machine learning project is to **predict the future sale price 
 
 ---
 
-## 📌 Project Status: **Near-Completion**
+## 📌 Project Status: 
 
-We’ve trained and validated multiple models and generated predictions for the test data. All components, including data cleaning, feature engineering, and model evaluation, have been completed.
+I’ve trained and validated multiple models and generated predictions for the test data. All components, including data cleaning, feature engineering, and model evaluation, have been completed.
 
 ---
 
