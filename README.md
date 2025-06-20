@@ -1,42 +1,75 @@
 # Deepflow
 #  Bluebook for Bulldozers - Sale Price Prediction
+---
 
-This project focuses on predicting the **sale price of used bulldozers** using historical auction data provided by **Kaggle**. The goal is to build a machine learning model that accurately estimates prices based on various features like product ID, usage, location, and date of sale.
+## 🧠 Project Objective
+
+The goal of this machine learning project is to **predict the future sale price of bulldozers** given various features like usage, machine specifications, and sale history. The problem is a **time-aware regression task** and requires careful **data preprocessing** due to the presence of **missing values, categorical columns, and time-based features**.
 
 ---
 
-##  Dataset Overview
+## 📌 Project Status: **Near-Completion**
 
-- **Source:** [Kaggle: Bluebook for Bulldozers](https://www.kaggle.com/competitions/bluebook-for-bulldozers/)
-- **Files used:**
-  - `Train.csv`
-  - `Valid.csv`
-  - `Test.csv`
-
-- **Target variable:** `SalePrice`
+We’ve trained and validated multiple models and generated predictions for the test data. All components, including data cleaning, feature engineering, and model evaluation, have been completed.
 
 ---
 
-## ⚙ Approach
+## 🧪 Data
 
-### 1. **Preprocessing**
-- Converted `saledate` to datetime format and extracted temporal features like:
-  - `saleYear`, `saleMonth`, `saleDay`, `saleDayOfWeek`, and `saleDayOfYear`
+The data was sourced from the [Kaggle Bluebook for Bulldozers](https://www.kaggle.com/c/bluebook-for-bulldozers/data) competition.
+
+### Files Used:
+
+- `Train.csv`: Training data (until end of 2011)
+- `Valid.csv`: Validation data (Jan 2012 – Apr 2012)
+- `Test.csv`: Final test data (May 2012 – Nov 2012)
+
+### Target Variable:
+
+- `SalePrice` – The price at which a bulldozer was sold at auction.
+
+---
+
+## 🛠 Features
+
+Extensive feature engineering was performed:
+- Parsed `saledate` into components: `saleYear`, `saleMonth`, `saleDay`, `saleDayOfWeek`, `saleDayOfYear`
 - Derived feature: `machine_age = saleYear - YearMade`
-- Removed high-cardinality ID columns (`SalesID`, `MachineID`)
-- Dropped columns with more than 90% missing values
-- Handled missing values:
-  - Numerical columns → filled with **median**
-  - Categorical columns → encoded using `.cat.codes` and added `_is_missing` flags
+- Handled string columns using category encoding + `_is_missing` binary flags
+- Handled numeric missing values with median imputation
+- Removed columns with >90% missing data
+- Dropped high-cardinality identifiers like `SalesID`, `MachineID`
 
-### 2. **Modeling**
-- Used **RandomForestRegressor** from Scikit-learn
-- Set `max_samples=10000` to speed up training with large data
-- Evaluation metric used: **Root Mean Squared Logarithmic Error (RMSLE)**
+Kaggle's [Data Dictionary](https://docs.google.com/spreadsheets/d/18ly-bLR8sbDJLITkWG7ozKm8l3RyieQ2Fpgix-beSYI/edit?usp=sharing) provides details on all original features.
 
-### 3. **Prediction**
-- Generated predictions on test set
-- Created submission file: `test_predictions.csv` in required format
+---
+
+## 🔍 Methods Used
+
+- **Exploratory Data Analysis (EDA)**
+- **Missing Value Treatment**
+- **Feature Engineering**
+- **Encoding & Transformation**
+- **Model Evaluation**
+
+---
+
+## 🤖 Models Applied
+
+| Model                | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `LinearRegression`  | Baseline regression model for initial evaluation                            |
+| `RandomForestRegressor` | Ensemble model with `n_estimators=100`, `max_samples=10000` for faster training |
+
+---
+
+## 🧮 Evaluation Metrics
+
+We focused on **RMSLE (Root Mean Squared Logarithmic Error)**, which is ideal for targets with large value ranges like price.
+
+Additional metrics:
+- `MAE` – Mean Absolute Error
+- `R²` – Coefficient of Determination
 
 ---
 
@@ -44,22 +77,31 @@ This project focuses on predicting the **sale price of used bulldozers** using h
 
 | Metric              | Score     |
 |---------------------|-----------|
-| Training RMSLE      |   0.25307 |
-| Validation RMSLE    |   0.28722 |
+| Training RMSLE      |  0.25307 |
+| Validation RMSLE    |  0.28722 |
 | Final Model Used    | RandomForestRegressor |
 
 ---
 
-##  Libraries Used
+## 📁 Project Structure
+├── final_model.ipynb # Main notebook with full pipeline
+├── test_predictions.csv # Submission file with SalesID and predicted SalePrice
+├── README.md # This file
+├── data/ # Folder for Train.csv, Valid.csv, Test.csv
+├── preprocess.py # (optional) Preprocessing functions
 
-- pandas
-- numpy
-- matplotlib / seaborn
-- scikit-learn
-- xgboost (optional)
-- catboost (optional)
 
 ---
 
-## Repository Structure
+## ⚙️ Technologies Used
+
+- Python 3
+- pandas, numpy
+- scikit-learn
+- matplotlib, seaborn
+- Jupyter Notebook
+
+---
+
+
 
